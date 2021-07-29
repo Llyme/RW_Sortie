@@ -29,7 +29,7 @@ namespace RW_Sortie
 
 		public static HashSet<IncidentDef> defs = null;
 		public static Vector2 scrollVector = new Vector2();
-		public static Rect scrollRect = new Rect();
+		public static float scrollHeight = 0f;
 
 		public static void DoWindowContents(Rect inRect)
 		{
@@ -47,16 +47,21 @@ namespace RW_Sortie
 					"StrangerInBlackJoin"
 				};
 
-			Listing_Standard gui = new Listing_Standard();
+			Listing_Standard gui = new Listing_Standard
+			{
+				maxOneColumn = true
+			};
 
 			gui.Begin(inRect);
 			{
 				gui.Label(DESCRIPTION);
 
-				float height = gui.CurHeight + 10f;
+				gui.Gap(10f);
+
+				float height = gui.CurHeight;
 				gui.ColumnWidth /= 2f;
 
-				gui.BeginScrollView(
+				Widgets.BeginScrollView(
 					new Rect(
 						0,
 						height,
@@ -64,7 +69,12 @@ namespace RW_Sortie
 						inRect.height - height - 20f
 					),
 					ref scrollVector,
-					ref scrollRect
+					new Rect(
+						0,
+						height,
+						gui.ColumnWidth + 4f,
+						scrollHeight
+					)
 				);
 				{
 					foreach (IncidentDef def in defs)
@@ -89,7 +99,8 @@ namespace RW_Sortie
 						}
 						catch { }
 				}
-				gui.EndScrollView(ref scrollRect);
+				Widgets.EndScrollView();
+				scrollHeight = gui.CurHeight - height;
 
 				float width = gui.ColumnWidth;
 
