@@ -93,7 +93,7 @@ namespace RW_Sortie
 					!Settings.BlackList.Contains(v.defName)
 				) &&
 				v.TargetAllowed(map) &&
-				teller.difficulty.difficulty >= v.minDifficulty &&
+				teller.difficulty.threatScale >= v.minThreatPoints &&
 				!disabled.Contains(v) &&
 				(
 					v.minPopulation == 0 ||
