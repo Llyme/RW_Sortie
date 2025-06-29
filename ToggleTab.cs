@@ -83,7 +83,7 @@ namespace RW_Sortie
 			Map map = Find.AnyPlayerHomeMap;
 			int pawn_count =
 				PawnsFinder
-					.AllMapsCaravansAndTravelingTransportPods_Alive_FreeColonists
+					.AllMapsCaravansAndTravellingTransporters_Alive_FreeColonists
 					.Count();
 			StoryWatcher watcher = Find.StoryWatcher;
 

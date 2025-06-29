@@ -13,13 +13,13 @@ namespace RW_Sortie
 			}
 		}
 
-		public override void DoWindowContents(Rect canvas)
+		public override void DoWindowContents(Rect inRect)
 		{
-			GUI.BeginGroup(canvas);
+			GUI.BeginGroup(inRect);
 			{
 				Listing_Standard listing_Standard = new Listing_Standard();
 
-				listing_Standard.Begin(canvas);
+				listing_Standard.Begin(inRect);
 				{
 					Text.Font = GameFont.Medium;
 					listing_Standard.Label(Translator.Translate("Sortie"), -1f, null);
